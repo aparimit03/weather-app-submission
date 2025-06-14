@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherCleanArch</string>
+    <string name="app_name">JP Weather</string>
     <string name="saved_cities">Saved cities</string>
     <string name="weather">Weather</string>
     <string name="search_for_a_city">Search for a city</string>
