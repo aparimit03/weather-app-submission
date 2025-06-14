@@ -1,0 +1,129 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.weathercleanarch"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.0'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    namespace 'com.weathercleanarch'
+}
+
+dependencies {
+    // Core
+    implementation libs.androidx.core
+
+    // Activity
+    implementation libs.androidx.activity.compose
+
+    // Compose ui
+    implementation libs.androidx.compose.ui.ui
+
+    // Material
+    implementation libs.androidx.compose.material.get2()
+    implementation libs.androidx.compose.material.get3()
+    implementation libs.google.accompanist.systemUiController
+    implementation libs.google.accompanist.permission
+
+    // Work manager
+    implementation libs.androidx.work
+
+    // Google accompanist
+    implementation libs.bundles.google.accompanist
+
+    // Coroutine
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+
+    // Retrofit
+    implementation libs.bundles.retrofit2
+
+    // Okhttp
+    implementation libs.okhttp3
+
+    //Location
+    implementation libs.play.services.location
+
+    // Room
+    implementation libs.androidx.room.runtime
+    implementation libs.androidx.room.ktx
+    annotationProcessor libs.androidx.room.compiler
+    kapt libs.androidx.room.compiler
+
+    // Hilt
+    implementation libs.androidx.hilt.navigation.compose
+    implementation libs.androidx.hilt.work
+    implementation libs.google.dagger.hilt.android
+    kapt libs.google.dagger.hilt.android.compiler
+
+    // Navigation
+    implementation libs.androidx.navigation
+
+    // Lifecycle
+    implementation libs.androidx.lifecycle.runtime.compose
+    implementation libs.androidx.lifecycle.runtime.ktx
+
+    // ViewModel
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+
+    // Gson
+    implementation libs.google.gson
+    // Junit
+    testImplementation libs.junit.get4()
+
+
+    // Coroutines test
+    testImplementation libs.kotlinx.coroutines.test
+
+    // MockK
+    testImplementation libs.mockk
+    testImplementation libs.mockk.agent.jvm
+
+    androidTestImplementation libs.androidx.test.junit
+    androidTestImplementation libs.androidx.test.espresso
+    androidTestImplementation libs.androidx.compose.ui.ui.test.junit
+
+    // UI Debugging
+    debugImplementation libs.androidx.compose.ui.ui.test.manifest
+}
+
